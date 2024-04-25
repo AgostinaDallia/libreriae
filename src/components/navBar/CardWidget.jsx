@@ -3,8 +3,7 @@ import { IoCartOutline } from "react-icons/io5";
 const CardWidget = () => {
   return (
     <div>
-        <IoCartOutline color= "pink" size="30px" />
-        <p>3</p>
+        <IoCartOutline color= "blue" size="30px" />
 
     </div>
     
