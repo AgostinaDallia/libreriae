@@ -18,10 +18,10 @@ const NavBar = () => {
           <a className="nav-link" href="#">Colores</a>
         </li>
       </ul>
-      <div>
+      <div style={{ marginRight: "10px" }} >
         <CardWidget />
       </div>
-      <p>3</p>
+      <p style={{ marginRight: "10px" }} >3</p>
     </div>
   );
 }
