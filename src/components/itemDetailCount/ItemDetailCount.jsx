@@ -1,12 +1,28 @@
-const ItemDetail = ({ product }) => {
-    return (
-      <div style={{ display: "flex" }}>
-        <img style={{ width: "500px" }} src={product.image} />
-        <div>
-          <p>{product.name}</p>
-          <p>Precio: {product.price}</p>
-        </div>
-      </div>
-    );
-  };
-  export default ItemDetail;
+import { useState, useEffect } from "react";
+import getProducts from "../../data/data";
+import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
+
+const ItemDetailCount = () => {
+  const [product, setProduct] = useState({});
+  const { idProduct } = useParams()
+
+  useEffect(() => {
+    getProducts()
+      .then((respuesta) => {
+        const productFind = respuesta.find( (productRes) => productRes.id === idProduct );
+        setProduct(productFind);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => {
+        console.log("Finalo la promesa");
+      });
+  }, [idProduct]);
+
+  return (
+    <ItemDetail product={product} />
+  );
+};
+export default ItemDetailCount;

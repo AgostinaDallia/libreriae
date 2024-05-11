@@ -13,9 +13,13 @@ const ItemListContainer = ({ saludo }) => {
     getProducts()
       .then((respuesta) => {
         if(idCategory){
+          //filtrar la data por la categoria que almacena idCategory
           const productsFilter = respuesta.filter( (productRes)=> productRes.category === idCategory )
+          setProducts(productsFilter)
+        }else{
+          //al no existir categoria guardamos todos los productos
+          setProducts(respuesta);
         }
-        setProducts(respuesta);
       })
       .catch((error) => {
         console.error(error);
