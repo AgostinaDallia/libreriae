@@ -1,28 +1,23 @@
+import logoEstimulo from "../../assets/logoEstimulo.png"
 import CardWidget from "./CardWidget"
 import "./NavBar.css"
+import { Link } from "react-router-dom"
+
+
 const NavBar = () => {
     
-  return ( 
-    <div className="nav-bar" style={{ display: "flex", alignItems: "center" }}>
-      <div>
-        <img className="logo" style={{ width: "200px" }} src="https://d22fxaf9t8d39k.cloudfront.net/a2d1d3f4e82b91e15243fbcfb101b5046e7dd82ab50af34f0dc94eb5b8f063af168567.png" alt="" />    
-      </div>
-      <ul className="nav justify-content-center" style={{ flex: "1", textAlign: "center" }}>
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Mochilas</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Cartucheras</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Colores</a>
-        </li>
+  return (
+    <nav className="navbar">
+      <Link to="/" className="brand">
+        <img className="logo" src={logoEstimulo} alt="logo estimulo" />
+      </Link>
+      <ul className="categorias">
+        <Link to="/category/Mochilas" className="categoria">Mochilas</Link>
+        <Link to="/category/Cartucheras" className="categoria">Cartucheras</Link>
+        <Link to="/category/Colores" className="categoria">Colores</Link>
       </ul>
-      <div style={{ marginRight: "10px" }} >
-        <CardWidget />
-      </div>
-      <p style={{ marginRight: "10px" }} >3</p>
-    </div>
+      <CardWidget />
+    </nav>
   );
 }
 
