@@ -1,15 +1,20 @@
-import { IoCartOutline } from "react-icons/io5";
+import { IoBagRemoveOutline } from "react-icons/io5";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
 import "./cardwidget.css"
 
 const CardWidget = () => {
+  const { cantidadTotal } = useContext(CartContext)
+
+  let cantidad = cantidadTotal()
+
   return (
-    <div className="cartwidget">
-        <IoCartOutline color= "blue" size="30px" />
-      <p className="number">1</p>
-    </div>
-    
+    <Link to="/cart" className={ cantidad >= 1 ? "cartwidget cart-red" : "cartwidget cart-blue" }>
+      <IoBagRemoveOutline size={35}/>
+      <p className="number"> { cantidad >=1 && cantidad } </p>
+    </Link>
   )
 }
-
 export default CardWidget

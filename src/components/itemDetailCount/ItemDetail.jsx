@@ -1,12 +1,40 @@
+import ItemCount from "../itemCount/ItemCount";
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
+
+import "./itemDetail.css";
+import { Link } from "react-router-dom";
+
 const ItemDetail = ({ product }) => {
-    return (
-      <div style={{ display: "flex" }}>
-        <img style={{ width: "500px" }} src={product.image} />
-        <div>
-          <p>{product.name}</p>
-          <p>Precio: {product.price}</p>
-        </div>
-      </div>
-    );
+  const [ocultarCount, setOcultarCount] = useState(false);
+  const { agregarProducto } = useContext(CartContext);
+
+  const addProduct = (count) => {
+    //estructuramos el nuevo producto a añadir en el carrito
+    //quantity = cantidad
+    const productCart = { ...product, quantity: count };
+    //usamos la funcion del context para añadir este producto al carrito
+    agregarProducto(productCart);
+    //una vez el usuario clickeo en "agregar producto" ocultamos el componente ItemCount
+    setOcultarCount(true);
   };
-  export default ItemDetail;
+
+  return (
+    <div className="item-detail">
+      <div className="image-detail">
+        <img src={product.image} />
+      </div>
+      <div className="content-detail">
+        <p className="name-detail">{product.name}</p>
+        <p className="text-detail">{product.description}</p>
+        <p className="text-detail">Precio: ${product.price}</p>
+        {ocultarCount ? (
+          <Link className="button-cart" to="/cart">Ir al carrito</Link>
+        ) : (
+          <ItemCount stock={product.stock} addProduct={addProduct} />
+        )}
+      </div>
+    </div>
+  );
+};
+export default ItemDetail;

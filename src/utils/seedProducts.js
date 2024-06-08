@@ -1,9 +1,13 @@
+import db from "../db/db.js";
+import { addDoc, collection } from "firebase/firestore";
+
+
 const products = [
     {
       id: "Axasd1231",
       name: "Lunchera",
-      description: "Description 1",
-      price: 450,
+      description: "Lunchera Futbol, un producto de la reconocida marca Cresko, es la elección perfecta para llevar la comida del día. Esta lunchera, con su color multicolor, no solo es funcional sino también atractiva. Cuenta con un amplio compartimiento principal, ideal para almacenar el almuerzo y los snacks",
+      price: 23000,
       stock: 5,
       category: "Catucheras",
       image: "/image/lunchera.jpg"
@@ -46,14 +50,11 @@ const products = [
     }
   ]
   
-  //obtener productos
-  const getProducts = () => {
-    return new Promise((resolve, reject) => {
-      //simulamos un retraso de red
-      setTimeout(() => {
-        resolve(products)
-      }, 3000);
+  const seedProducts = () => {
+    products.map(({ id, ...rest }) =>{
+      addDoc(collection(db, "products"), rest)
     });
-  };
+    return
+  }
   
-  export default getProducts
+  seedProducts()

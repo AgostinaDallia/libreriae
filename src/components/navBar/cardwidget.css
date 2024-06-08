@@ -6,3 +6,10 @@
   .cartwidget .number{
     padding: 0 5px;
   }
+
+  .cart-red{
+    color: rgb(255, 255, 255);
+  }
+  .cart-blue{
+    color: rgba(255, 255, 255, 0.527);
+  }
