@@ -15,8 +15,8 @@ const NavBar = () => {
         <Link to="/category/Mochilas" className="categoria link-navbar">Mochilas</Link>
         <Link to="/category/Cartucheras" className="categoria link-navbar">Cartucheras</Link>
         <Link to="/category/Colores" className="categoria link-navbar">Colores</Link>
-      </ul>
-      <CardWidget />
+        <CardWidget /> </ul>
+      
     </nav>
   );
 }

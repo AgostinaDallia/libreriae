@@ -1,15 +1,16 @@
 .cartwidget {
-    display: flex;
-    align-items: center;
-    padding: 0 40px;
+  align-items: center;
+  padding: 0 40px;
+  color: white;
+  text-decoration: none;
   }
   .cartwidget .number{
     padding: 0 5px;
   }
 
   .cart-red{
-    color: rgb(255, 255, 255);
+    color: rgb(107, 104, 104);
   }
   .cart-blue{
-    color: rgba(255, 255, 255, 0.527);
+    color: rgba(68, 5, 243, 0.527);
   }
